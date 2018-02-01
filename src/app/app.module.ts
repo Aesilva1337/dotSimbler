@@ -1,3 +1,6 @@
+import { ComponentsModule } from './../components/components.module';
+import { MemoriaProvider } from './../providers/memoria/memoria';
+import { CommandsProvider } from './../providers/cpu/commands';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -5,26 +8,47 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+
 import { HomePage } from '../pages/home/home';
+
+import { CpuProvider } from '../providers/cpu/cpu';
+import { UnidadeControleProvider } from '../providers/unidade-controle/unidade-controle';
+import { UnidadeLogicaAritmeticaProvider } from '../providers/unidade-logica-aritmetica/unidade-logica-aritmetica';
+import { RegistradorGeralProvider } from '../providers/registrador-geral/registrador-geral';
+import { RegistradorEstadoProvider } from '../providers/registrador-estado/registrador-estado';
+import { AutosizeDirective } from '../directives/autosize/autosize';
+import { Select } from 'ionic-angular/components/select/select';
+import { ModalContent } from '../components/text-editor/text-editor';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    AutosizeDirective,
+    ModalContent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ModalContent
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CpuProvider,
+    UnidadeControleProvider,
+    UnidadeLogicaAritmeticaProvider,
+    RegistradorGeralProvider,
+    RegistradorEstadoProvider,
+    CommandsProvider,
+    MemoriaProvider
   ]
 })
 export class AppModule {}
