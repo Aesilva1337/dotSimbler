@@ -19,7 +19,6 @@ export class HomePage {
   public cpu:CpuProvider,
   public reg:RegistradorGeralProvider,
   public regS:RegistradorEstadoProvider) {
-
   }
 
   exec(){
