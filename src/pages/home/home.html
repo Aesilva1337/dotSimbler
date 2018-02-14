@@ -1,27 +1,5 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      DOT.SIMBLER
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content >
-  <form (ngSubmit)="exec();">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-textarea autosize name="valor" [(ngModel)]="valor" [autocomplete]="true" spellcheck="true">
-            </ion-textarea>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button ion-button>Compilar</button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-</ion-content>
+<ion-tabs>
+    <ion-tab [root]="compiladorRoot" tabTitle="Compilador" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="sobreRoot" tabTitle="Sobre" tabIcon="information-circle"></ion-tab>
+    <ion-tab [root]="comandosRoot" tabTitle="Comandos" tabIcon="information-circle"></ion-tab>
+</ion-tabs>
