@@ -47,7 +47,8 @@ import { Select } from 'ionic-angular/components/select/select';
     RegistradorGeralProvider,
     RegistradorEstadoProvider,
     CommandsProvider,
-    MemoriaProvider
+    MemoriaProvider,
+    Commands
   ]
 })
 export class AppModule {}

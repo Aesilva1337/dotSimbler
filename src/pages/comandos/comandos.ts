@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Commands } from '../../providers/commands/commands';
 
 /**
  * Generated class for the ComandosPage page.
@@ -14,12 +15,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'comandos.html',
 })
 export class ComandosPage {
+  commandsList: any;
+  commandsProvider: Commands;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, commandsProvider: Commands) {
+    this.commandsProvider = commandsProvider;
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ComandosPage');
+    this.loadCommands();
   }
 
+  loadCommands(){
+    this.commandsList = this.commandsProvider.getList();
+  }
+
+  getCommand(searchbar) {
+    this.loadCommands();
+    let c = searchbar.srcElement.value;
+    if (!c) {
+      return;
+    }
+  
+    this.commandsList = this.commandsList.filter((v) => {
+      if(v.comando && c) {
+        if (v.comando.toLowerCase().indexOf(c.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
 }
