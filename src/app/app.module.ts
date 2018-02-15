@@ -1,3 +1,4 @@
+import { Commands } from './../providers/commands/commands';
 import { TextEditorComponent } from './../components/text-editor/text-editor';
 import { ComponentsModule } from './../components/components.module';
 import { MemoriaProvider } from './../providers/memoria/memoria';
@@ -34,8 +35,7 @@ import { Select } from 'ionic-angular/components/select/select';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    TextEditorComponent
+    HomePage
   ],
   providers: [
     StatusBar,
