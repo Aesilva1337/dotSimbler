@@ -1,3 +1,4 @@
+import { TextEditorComponent } from './../components/text-editor/text-editor';
 import { ComponentsModule } from './../components/components.module';
 import { MemoriaProvider } from './../providers/memoria/memoria';
 import { CommandsProvider } from './../providers/cpu/commands';
@@ -18,14 +19,12 @@ import { RegistradorGeralProvider } from '../providers/registrador-geral/registr
 import { RegistradorEstadoProvider } from '../providers/registrador-estado/registrador-estado';
 import { AutosizeDirective } from '../directives/autosize/autosize';
 import { Select } from 'ionic-angular/components/select/select';
-import { ModalContent } from '../components/text-editor/text-editor';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    AutosizeDirective,
-    ModalContent
+    AutosizeDirective
   ],
   imports: [
     BrowserModule,
@@ -36,7 +35,7 @@ import { ModalContent } from '../components/text-editor/text-editor';
   entryComponents: [
     MyApp,
     HomePage,
-    ModalContent
+    TextEditorComponent
   ],
   providers: [
     StatusBar,
