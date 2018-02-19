@@ -17,6 +17,8 @@ export class CompiladorPage {
 
   tipoEntrada: string = "2";
   tipoSaida: string = "2";
+  rangeSpeed: string = "300";
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
