@@ -1,20 +1,29 @@
-import { Memory } from './../cpu/memory';
 import { Injectable } from "@angular/core";
 
 @Injectable()
 export class MemoriaProvider{
+    public memory:Map<number , any>; 
     
-    private memoria:Map<number,Memory>;
-    
+    private offset:number = 1;
+
     constructor(){
-        this.memoria = new Map<number,Memory>();
+        this.memory = new Map<number,any>();
     }
 
-    set(posicao:number,memoria:Memory){
-        this.memoria.set(posicao,memoria);
+    getKeys(){
+        return Array.from(this.memory.keys());
     }
 
-    get(posicao:number){
-        return this.memoria.get(posicao);
+    setMemory(line:number,value){
+        this.memory.set(line,value);
+    }
+    setLine(value){
+        this.offset = value;
+    }
+    getLine(){
+       return this.offset;
+    }
+    lineOperation(){
+        return this.memory.get(this.offset);
     }
 }
