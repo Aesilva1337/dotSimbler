@@ -15,11 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CompiladorPage {
 
+  tipoEntrada: string = "2";
+  tipoSaida: string = "2";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompiladorPage');
+    console.log('ionViewDidLoad CompiladorPage');    
   }
 
 }

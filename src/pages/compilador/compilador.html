@@ -7,13 +7,52 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Compilador</ion-title>
+    <ion-title>Simulador</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
-    <text-editor></text-editor>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Tipo de entrada:
+          </ion-label>
+          <ion-select [(ngModel)]="tipoEntrada" okText="OK" cancelText="Cancelar">
+            <ion-option value="0">Decimal</ion-option>
+            <ion-option value="1">Binário</ion-option>
+            <ion-option value="2">Hexadecimal</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <text-editor></text-editor>
+      </ion-col>
+      <ion-col>
+        <p>Teste</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <button ion-button icon-start>
+        <ion-icon name="play"></ion-icon>
+        Executar
+      </button>
+      <button ion-button icon-start>
+        <ion-icon name="pause"></ion-icon>
+        Pausar
+      </button>
+      <button ion-button icon-start>
+        <ion-icon name="skip-forward"></ion-icon>
+        Retroceder
+      </button>
+      <button ion-button icon-start>
+        <ion-icon name="skip-backward"></ion-icon>
+        Avançar
+      </button>
+    </ion-row>
+  </ion-grid>
 </ion-content>
