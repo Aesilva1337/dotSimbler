@@ -1,9 +1,3 @@
-<!--
-  Generated template for the ComandosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -15,24 +9,21 @@
 
 <ion-content padding>
   <ion-searchbar (ionInput)="getCommand($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item *ngFor="let commands of commandsList">
-      <div class="col-lg-8 col-md-10 col-xs-12">
-        <h2> {{ commands.comando }} </h2>
-        <h3>
-          <strong>Descrição:</strong>
-        </h3>
-        <div *ngFor="let descricao of commands.desc">
-          <p>{{ descricao }}</p>
-        </div>
-        <h3>
-          <strong>Exemplo de uso:</strong>
-        </h3>
-        <div *ngFor="let exemplo of commands.exemplos">
-          <p>{{ exemplo }}</p>
-        </div>
-      </div>
-    </ion-item>
-  </ion-list>
+
+    <ion-card *ngFor="let commands of commandsList">
+      <ion-item style="background-color: #1abc9c;">
+        <h1 style="color:#ffffff">{{ commands.comando }}</h1>
+      </ion-item>
+      <ion-card-content>
+        <ion-card-header>Descrição:</ion-card-header>
+        <ion-card-content *ngFor="let desc of commands.desc">
+          {{ desc }}
+        </ion-card-content>
+        <ion-card-header>Exemplo de uso:</ion-card-header>
+        <ion-card-content *ngFor="let exemplo of commands.exemplos">
+          {{ exemplo }}
+        </ion-card-content>
+      </ion-card-content>
+    </ion-card>
 
 </ion-content>
