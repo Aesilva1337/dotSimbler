@@ -15,11 +15,11 @@
         <h1 style="color:#ffffff">{{ commands.comando }}</h1>
       </ion-item>
       <ion-card-content>
-        <ion-card-header>Descrição:</ion-card-header>
+        <ion-card-header><b>Descrição:</b></ion-card-header>
         <ion-card-content *ngFor="let desc of commands.desc">
           {{ desc }}
         </ion-card-content>
-        <ion-card-header>Exemplo de uso:</ion-card-header>
+        <ion-card-header><b>Exemplo de uso:</b></ion-card-header>
         <ion-card-content *ngFor="let exemplo of commands.exemplos">
           {{ exemplo }}
         </ion-card-content>

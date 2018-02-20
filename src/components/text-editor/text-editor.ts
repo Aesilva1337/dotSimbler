@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class TextEditorComponent {
   text: string;
+  textInstruction: string = "";
   public op:any;
   constructor() {
     console.log('Hello TextEditorComponent Component');
