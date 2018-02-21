@@ -27,21 +27,10 @@
           </ion-select>
         </ion-item>
       </ion-col>
-      <!-- <ion-col>
-        <ion-item>
-          <ion-label>Tipo de saida:
-          </ion-label>
-          <ion-select [(ngModel)]="tipoSaida" okText="OK" cancelText="Cancelar">
-            <ion-option value="0">Decimal</ion-option>
-            <ion-option value="1">Binário</ion-option>
-            <ion-option value="2">Hexadecimal</ion-option>
-          </ion-select>
-        </ion-item>
-      </ion-col> -->
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-card>
+        <ion-card style="height: 248px">
           <ion-item style="background-color: #1abc9c;">
             <p style="color: aliceblue">Instruções</p>
           </ion-item>
@@ -63,9 +52,28 @@
             <ion-card-content>
               <ion-label>
                 <b>AX</b>: {{regAx}}</ion-label>
+              <ion-label>
+                <b>BX</b>: {{regBx}}</ion-label>
+              <ion-label>
+                <b>CX</b>: {{regCx}}</ion-label>
+              <ion-label>
+                <b>DX</b>: {{regDx}}</ion-label>
             </ion-card-content>
           </ion-card-content>
         </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Tipo de saida:
+          </ion-label>
+          <ion-select [(ngModel)]="tipoSaida" okText="OK" cancelText="Cancelar">
+            <ion-option value="0">Decimal</ion-option>
+            <ion-option value="1">Binário</ion-option>
+            <ion-option value="2">Hexadecimal</ion-option>
+          </ion-select>
+        </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -76,20 +84,20 @@
         </ion-range>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <button ion-button icon-start>
+    <ion-row style="margin-left: auto; margin-right: auto; display: block;">
+      <button ion-button large icon-only>
         <ion-icon name="play"></ion-icon>
       </button>
-      <button ion-button icon-start>
+      <button ion-button large icon-only>
         <ion-icon name="pause"></ion-icon>
       </button>
-      <button ion-button icon-start>
+      <button ion-button large icon-only>
         <ion-icon name="pause"></ion-icon>
       </button>
-      <button ion-button icon-start>
+      <button ion-button large icon-only>
         <ion-icon name="skip-forward"></ion-icon>
       </button>
-      <button ion-button icon-start>
+      <button ion-button large icon-only>
         <ion-icon name="skip-backward"></ion-icon>
       </button>
     </ion-row>
