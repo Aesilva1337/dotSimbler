@@ -3,6 +3,7 @@ import { TextEditorComponent } from './../components/text-editor/text-editor';
 import { ComponentsModule } from './../components/components.module';
 import { MemoriaProvider } from './../providers/memoria/memoria';
 import { CommandsProvider } from './../providers/cpu/commands';
+import { ConversorProvider } from './../providers/conversor/conversor';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -48,7 +49,8 @@ import { Select } from 'ionic-angular/components/select/select';
     RegistradorEstadoProvider,
     CommandsProvider,
     MemoriaProvider,
-    Commands
+    Commands,
+    ConversorProvider
   ]
 })
 export class AppModule {}
