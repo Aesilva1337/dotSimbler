@@ -6,9 +6,9 @@ import { Commands } from '../providers/commands/commands';
 import { IonicModule } from 'ionic-angular/module';
 
 @NgModule({
-	declarations: [TextEditorComponent],
+	declarations: [],
 	imports: [IonicModule],
-	exports: [TextEditorComponent],
+	exports: [],
 	providers: [Commands,ConversorProvider,Analyzer]
 })
 export class ComponentsModule {}
