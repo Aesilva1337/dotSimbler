@@ -20,6 +20,7 @@ export class CpuProvider {
   }
 
   mapMemory(values:LineOperation[]){
+    this.memory.clean();
     values.forEach(element => {
       this.memory.setMemory(element.line,element.operation)
     });

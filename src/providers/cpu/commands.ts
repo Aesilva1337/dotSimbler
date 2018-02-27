@@ -40,4 +40,8 @@ export class CommandsProvider {
   get(index){
     return this.map.get(index);
   }
+
+  contains(val){
+    return this.map.has(val);
+  }
 }

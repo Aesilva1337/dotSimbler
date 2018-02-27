@@ -7,7 +7,11 @@ export class MemoriaProvider{
     private offset:number = 1;
 
     constructor(){
+    }
+
+    clean(){
         this.memory = new Map<number,any>();
+        this.offset = 1;
     }
 
     getKeys(){

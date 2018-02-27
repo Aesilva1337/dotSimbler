@@ -50,7 +50,8 @@
           <ion-card-header>
           </ion-card-header>
           <ion-card-content>
-            <text-editor></text-editor>
+            <ion-textarea [(ngModel)]="text">  
+            </ion-textarea>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -63,14 +64,10 @@
             <ion-card-header>
             </ion-card-header>
             <ion-card-content>
-              <ion-label>
-                <b>AX</b>: {{regAx}}</ion-label>
-              <ion-label>
-                <b>BX</b>: {{regBx}}</ion-label>
-              <ion-label>
-                <b>CX</b>: {{regCx}}</ion-label>
-              <ion-label>
-                <b>DX</b>: {{regDx}}</ion-label>
+              <ion-label > <b>AX: </b>{{regAx}}</ion-label>
+              <ion-label > <b>BX: </b>{{regBx}}</ion-label>
+              <ion-label > <b>CX: </b>{{regCx}}</ion-label>
+              <ion-label > <b>DX: </b>{{regDx}}</ion-label>
             </ion-card-content>
           </ion-card-content>
         </ion-card>
@@ -86,10 +83,9 @@
             <ion-card-header>
             </ion-card-header>
             <ion-card-content>
-              <ion-label>
-                <b>Z</b>:
-                <ion-icon name="ion-toggle"></ion-icon>
-              </ion-label>
+              <ion-label > <b>S: </b>{{regE.SINAL}}</ion-label>
+              <ion-label > <b>Z: </b>{{regE.ZERO}}</ion-label>
+              <ion-label > <b>O: </b>{{regE.OVERFLOW}}</ion-label>
             </ion-card-content>
           </ion-card-content>
         </ion-card>
@@ -104,8 +100,8 @@
       </ion-col>
     </ion-row>
     <ion-row style="margin-left: auto; margin-right: auto; display: block;">
-      <button ion-button icon-only>
-        <ion-icon name="play"></ion-icon>
+      <button ion-button icon-only (click)="play()">
+        <ion-icon name="play" ></ion-icon>
       </button>
       <button ion-button icon-only>
         <ion-icon name="pause"></ion-icon>

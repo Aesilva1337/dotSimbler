@@ -1,3 +1,4 @@
+import { Registrador } from './../cpu/registrador';
 import { RegistradorEstadoProvider } from './../registrador-estado/registrador-estado';
 import { StateOperation } from './../cpu/stateOperation';
 import { LineOperation } from './../cpu/lineOperation';
@@ -20,9 +21,17 @@ export class UnidadeControleProvider {
   private regG:RegistradorGeralProvider,
   private regE:RegistradorEstadoProvider) {
 
-    this.state = new StateOperation(regE,regG);
+   
   }
+
   mapKeys(){
+    this.regG.AX = new Registrador();
+    this.regG.BX = new Registrador();
+    this.regG.CX = new Registrador();
+    this.regG.DX = new Registrador();
+
+    this.line = 0;
+    this.state = new StateOperation(this.regE,this.regG);
     this.lines = this.memory.getKeys();
   }
 
@@ -31,7 +40,7 @@ export class UnidadeControleProvider {
   }
 
   nextOperation(){  
-    console.log(this.line);
+    console.log("nextOperation()"+this.line);
     this.memory.setLine(this.lines[this.line]);
     this.executeOperation();
 

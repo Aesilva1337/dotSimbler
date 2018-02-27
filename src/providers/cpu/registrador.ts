@@ -1,7 +1,7 @@
 import { ValueInterface } from "./value";
 
 export class Registrador implements ValueInterface{
-    private value:number = 0;
+    public value:number = 0;
     getValue():number{
         return this.value;
     }

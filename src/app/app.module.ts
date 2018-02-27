@@ -1,3 +1,4 @@
+import { Analyzer } from './../providers/analyzer/analyzer';
 import { Commands } from './../providers/commands/commands';
 import { TextEditorComponent } from './../components/text-editor/text-editor';
 import { ComponentsModule } from './../components/components.module';
@@ -50,7 +51,8 @@ import { Select } from 'ionic-angular/components/select/select';
     CommandsProvider,
     MemoriaProvider,
     Commands,
-    ConversorProvider
+    ConversorProvider,
+    Analyzer
   ]
 })
 export class AppModule {}
