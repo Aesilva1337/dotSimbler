@@ -1,6 +1,5 @@
 import { Analyzer } from './../providers/analyzer/analyzer';
 import { Commands } from './../providers/commands/commands';
-import { TextEditorComponent } from './../components/text-editor/text-editor';
 import { ComponentsModule } from './../components/components.module';
 import { MemoriaProvider } from './../providers/memoria/memoria';
 import { CommandsProvider } from './../providers/cpu/commands';

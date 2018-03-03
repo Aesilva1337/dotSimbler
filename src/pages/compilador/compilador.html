@@ -50,7 +50,7 @@
           <ion-card-header>
           </ion-card-header>
           <ion-card-content>
-            <ion-textarea [(ngModel)]="text">  
+            <ion-textarea [(ngModel)]="text">
             </ion-textarea>
           </ion-card-content>
         </ion-card>
@@ -64,10 +64,14 @@
             <ion-card-header>
             </ion-card-header>
             <ion-card-content>
-              <ion-label > <b>AX: </b>{{regAx}}</ion-label>
-              <ion-label > <b>BX: </b>{{regBx}}</ion-label>
-              <ion-label > <b>CX: </b>{{regCx}}</ion-label>
-              <ion-label > <b>DX: </b>{{regDx}}</ion-label>
+              <ion-label>
+                <b>AX: </b>{{regAx}}</ion-label>
+              <ion-label>
+                <b>BX: </b>{{regBx}}</ion-label>
+              <ion-label>
+                <b>CX: </b>{{regCx}}</ion-label>
+              <ion-label>
+                <b>DX: </b>{{regDx}}</ion-label>
             </ion-card-content>
           </ion-card-content>
         </ion-card>
@@ -83,9 +87,11 @@
             <ion-card-header>
             </ion-card-header>
             <ion-card-content>
-              <ion-label > <b>S: </b>{{regE.SINAL}}</ion-label>
-              <ion-label > <b>Z: </b>{{regE.ZERO}}</ion-label>
-              <ion-label > <b>O: </b>{{regE.OVERFLOW}}</ion-label>
+              <ion-item text-wrap style="margin-left: auto; margin-right: auto; display: block;">
+                <b>S: </b>{{regE.SINAL}}
+                <b>Z: </b>{{regE.ZERO}}
+                <b>O: </b>{{regE.OVERFLOW}}
+              </ion-item>
             </ion-card-content>
           </ion-card-content>
         </ion-card>
@@ -101,7 +107,7 @@
     </ion-row>
     <ion-row style="margin-left: auto; margin-right: auto; display: block;">
       <button ion-button icon-only (click)="play()">
-        <ion-icon name="play" ></ion-icon>
+        <ion-icon name="play"></ion-icon>
       </button>
       <button ion-button icon-only>
         <ion-icon name="pause"></ion-icon>
