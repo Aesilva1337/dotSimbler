@@ -1,3 +1,22 @@
 page-compilador {
 
 }
+textarea{font-size: 1.2em;
+    margin:0!important; 
+    height: 100%!important;
+    width: 100%;
+    border: none;
+    overflow: hidden;
+    line-height:1.4em !important;
+}
+.line{
+    line-height: 1.3em;
+    font-size: 1.2em !important;
+}
+
+.erro{
+    position: absolute;
+    width: 100px;
+    background-color: rgba(255, 24, 0, 0.33);
+    z-index: 1;
+}

@@ -42,57 +42,46 @@
       </ion-col>
     </ion-row> -->
     <ion-row>
-      <ion-col>
-        <ion-card style="height: 248px">
-          <ion-item style="background-color: #1abc9c;">
-            <p style="color: aliceblue">Instruções</p>
-          </ion-item>
-          <ion-card-header>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-textarea [(ngModel)]="text">
-            </ion-textarea>
-          </ion-card-content>
+      <ion-col col-6 >
+        <ion-card style="height:260px">
+          <ion-grid>
+
+            <ion-row>
+              <ion-col col-3 style="padding-top: 9px !important">
+                <div   *ngFor="let l of line; index as i">
+                    <p id="{{i}}" class="line" >
+                      {{i}}
+                    </p>
+                </div>
+              </ion-col>
+              <ion-col>
+                <textarea rows="8" elastic (input)="lineUp()"  [(ngModel)]="text">
+              </textarea>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </ion-card>
       </ion-col>
-      <ion-col>
-        <ion-card>
-          <ion-item style="background-color: #1abc9c;">
-            <p style="color: aliceblue">Registradores</p>
-          </ion-item>
+
+      <ion-col col-6>
+        <ion-card  style="height:260px">
           <ion-card-content>
-            <ion-card-header>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-label>
-                <b>AX: </b>{{regAx}}</ion-label>
-              <ion-label>
-                <b>BX: </b>{{regBx}}</ion-label>
-              <ion-label>
-                <b>CX: </b>{{regCx}}</ion-label>
-              <ion-label>
-                <b>DX: </b>{{regDx}}</ion-label>
-            </ion-card-content>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-item style="background-color: #1abc9c;">
-            <p style="color: aliceblue">Sinalizadores</p>
-          </ion-item>
-          <ion-card-content>
-            <ion-card-header>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-item text-wrap style="margin-left: auto; margin-right: auto; display: block;">
-                <b>S: </b>{{regE.SINAL}}
-                <b>Z: </b>{{regE.ZERO}}
-                <b>O: </b>{{regE.OVERFLOW}}
-              </ion-item>
-            </ion-card-content>
+            <ion-label>
+              <b>AX: </b>{{regAx}}</ion-label>
+            <ion-label>
+              <b>BX: </b>{{regBx}}</ion-label>
+            <ion-label>
+              <b>CX: </b>{{regCx}}</ion-label>
+            <ion-label>
+              <b>DX: </b>{{regDx}}</ion-label>
+
+            <ion-label>
+              <b>S: </b>{{reg.S}}</ion-label>
+            <ion-label>
+              <b>Z: </b>{{reg.Z}}</ion-label>
+            <ion-label>
+              <b>O: </b>{{reg.O}}</ion-label>
+
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -109,17 +98,17 @@
       <button ion-button icon-only (click)="play()">
         <ion-icon name="play"></ion-icon>
       </button>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="parar()">
         <ion-icon name="pause"></ion-icon>
       </button>
       <button ion-button icon-only>
         <ion-icon name="square"></ion-icon>
       </button>
-      <button ion-button icon-only>
-        <ion-icon name="skip-forward"></ion-icon>
-      </button>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="voltar()">
         <ion-icon name="skip-backward"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="prox()">
+        <ion-icon name="skip-forward"></ion-icon>
       </button>
     </ion-row>
   </ion-grid>
