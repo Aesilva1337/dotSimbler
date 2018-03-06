@@ -40,7 +40,7 @@ export class Analyzer{
                 }
             });
             
-            let val = null;
+            let val = "";
             if(sub.length > 1)
                 val = sub[1];
 
@@ -52,7 +52,8 @@ export class Analyzer{
             if(sub.length>2){
                 lineOp.error = true;
                 lineOp.msgErro = "Contém mais de 2 instruções.";
-            } else if(!this.isValidCommand(sub[0])||
+            } 
+            if(!this.isValidCommand(sub[0])||
             !this.isValidCommand(val)){
                 lineOp.error = true;
                 lineOp.msgErro = "Comando invalido.";

@@ -44,9 +44,9 @@ export class CompiladorPage {
   }
    lineop;
 
-  public error(msg) {
+  public error(msg,line) {
       let toast = this.toastCtrl.create({
-        message: "Error: "+msg,
+        message: "Erro Linha["+line+"]: "+msg,
         duration: 3000,
         position: 'top'
       });
@@ -73,11 +73,11 @@ export class CompiladorPage {
     this.lineop = result[0];
     let lineopErro = result[1];
 
-    console.log(lineopErro.length);
+    console.log("ERROS:"+lineopErro.length);
     if(lineopErro.length > 0){
       document.getElementById("i"+lineopErro[0].line)
          .classList.add("erro1");
-         this.error(lineopErro[0].msgErro);
+         this.error(lineopErro[0].msgErro,lineopErro[0].line);
     }else{
       this.cpu.setLineOperations(this.lineop);
       this.cpu.processarOperations(this);
@@ -92,10 +92,10 @@ export class CompiladorPage {
   changeSaida() {
     switch (this.tipoSaida) {
       case "0": {
-        this.regAx = this.conversor.toDecimal(this.reg.DX, 2);
-        this.regBx = this.conversor.toDecimal(this.reg.CX, 2);
-        this.regCx = this.conversor.toDecimal(this.reg.BX, 2);
-        this.regDx = this.conversor.toDecimal(this.reg.DX, 2);
+        this.regAx = this.reg.DX;
+        this.regBx = this.reg.CX;
+        this.regCx = this.reg.BX;
+        this.regDx = this.reg.DX;
         break;
       }
       case "1": {
