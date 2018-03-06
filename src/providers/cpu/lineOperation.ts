@@ -5,6 +5,7 @@ export class LineOperation{
     public operation:Operation;
     public value:number;
     public error:boolean = false;
+    public msgErro:string;
 
     constructor(){
         

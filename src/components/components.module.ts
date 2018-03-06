@@ -1,13 +1,10 @@
-import { Analyzer } from './../providers/analyzer/analyzer';
-import { ConversorProvider } from './../providers/conversor/conversor';
 import { NgModule } from '@angular/core';
-import { Commands } from '../providers/commands/commands';
 import { IonicModule } from 'ionic-angular/module';
 
 @NgModule({
 	declarations: [],
-	imports: [IonicModule],
+	imports: [IonicModule], 
 	exports: [],
-	providers: [Commands,ConversorProvider,Analyzer]
-})
+	providers: []
+})  
 export class ComponentsModule {}

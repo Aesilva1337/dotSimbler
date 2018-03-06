@@ -75,12 +75,9 @@ export class CompiladorPage {
 
     console.log(lineopErro.length);
     if(lineopErro.length > 0){
-        document.getElementById(""+lineopErro[0].line)
-        .classList.add("erro") ;
-        document.getElementById(""+lineopErro[0].line)
-        .addEventListener('click',(e)=>{
-           this.error(lineopErro[0].msgErro);
-        });
+      document.getElementById("i"+lineopErro[0].line)
+         .classList.add("erro1");
+         this.error(lineopErro[0].msgErro);
     }else{
       this.cpu.setLineOperations(this.lineop);
       this.cpu.processarOperations(this);

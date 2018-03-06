@@ -1,7 +1,7 @@
 import {ElementRef, HostListener, Directive, OnInit} from '@angular/core';
 
 @Directive({
-  selector: 'ion-textarea[autosize]'
+  selector: '[autosize]'
 })
 
 export class AutosizeDirective implements OnInit {
@@ -18,9 +18,10 @@ export class AutosizeDirective implements OnInit {
   }
 
   adjust():void {
-    let textArea = this.element.nativeElement.getElementsByTagName('textarea')[0];
-    textArea.style.overflow = 'hidden';
-    textArea.style.height = 'auto';
-    textArea.style.height = textArea.scrollHeight + "px";
+    this.element.nativeElement.querySelector("textarea").style.height = "100%";
+    // let textArea = this.element.nativeElement.getElementsByTagName('textarea')[0];
+    // textArea.style.overflow = 'hidden';
+    // textArea.style.height = 'auto';
+    // textArea.style.height = textArea.scrollHeight + "px";
   }
 }

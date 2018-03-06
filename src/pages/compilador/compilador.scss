@@ -1,22 +1,33 @@
-page-compilador {
 
-}
-textarea{font-size: 1.2em;
+textarea{
     margin:0!important; 
     height: 100%!important;
     width: 100%;
     border: none;
     overflow: hidden;
-    line-height:1.4em !important;
+    font-size: 1.2em;
+    line-height:1.61em !important;
 }
 .line{
-    line-height: 1.3em;
+    line-height: 1.1em;
     font-size: 1.2em !important;
 }
 
+.erro1{
+    color: red;
+}
 .erro{
     position: absolute;
     width: 100px;
     background-color: rgba(255, 24, 0, 0.33);
     z-index: 1;
+}
+
+.bulbfalse{
+    font-size: 17px; 
+    color : gray;
+}
+.bulbtrue{
+    font-size: 17px; 
+    color : green;
 }

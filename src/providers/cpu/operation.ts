@@ -1,5 +1,3 @@
-import { Commands } from './../commands/commands';
-
 export class Operation{
     command:string;
     value:any;

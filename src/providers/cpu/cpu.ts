@@ -1,38 +1,46 @@
 import { LineOperation } from './lineOperation';
-import { UnidadeControleProvider } from './../unidade-controle/unidade-controle';
-import { RegistradorEstadoProvider } from './../registrador-estado/registrador-estado';
-import { ValueInterface } from './value';
-import { CommandsProvider } from './commands';
+import { Memoria } from './memoria/memoria';
+import { UnidadeControle } from "./unidade-controle/unidade-controle";
 import { Injectable } from '@angular/core';
-import { MemoriaProvider } from '../memoria/memoria';
-import { RegistradorGeralProvider } from '../registrador-geral/registrador-geral';
 
 @Injectable()
-export class CpuProvider {
+export class CPU{
 
-  constructor(
-      private commands: CommandsProvider,
-      private memory: MemoriaProvider,
-      private regEst: RegistradorEstadoProvider,
-      private reg:RegistradorGeralProvider,
-      private UC : UnidadeControleProvider
-    ) {
-  }
+    private pause = false;
 
-  mapMemory(values:LineOperation[]){
-    this.memory.clean();
-    values.forEach(element => {
-      this.memory.setMemory(element.line,element.operation)
-    });
-    this.UC.mapKeys();
-  }
-  public next() {
-      this.UC.nextOperation();
-  }
-  public prev(){
-    this.UC.prevOperation();
-  }
+    constructor(private unidadeControle: UnidadeControle,
+        private memoria:Memoria){
 
+    }
+    lineOperations:LineOperation;
+    public setLineOperations(lineOperations) {
+        this.unidadeControle.reset();
+        this.lineOperations = lineOperations;
+        this.memoria.map(lineOperations);
+    }
+    
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
+    parar(){
+        this.pause = true;
+    }
 
+    async processarOperations(callback){
+        this.pause =false;
+        while(this.unidadeControle.executarOperation() && !this.pause){
+            await this.sleep(+callback.rangeSpeed*10); 
+            callback.changeSaida();
+        };
+    }
+
+    proximaOperation(callback){
+        this.unidadeControle.executarOperation();
+        callback.changeSaida();
+    }
+    voltarOperation(callback){
+        this.unidadeControle.voltarOperation();
+        callback.changeSaida();
+    }
 }

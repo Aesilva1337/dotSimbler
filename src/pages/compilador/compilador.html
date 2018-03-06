@@ -47,11 +47,11 @@
           <ion-grid>
 
             <ion-row>
-              <ion-col col-3 style="padding-top: 9px !important">
+              <ion-col col-4 style="padding-top: 9px !important">
                 <div   *ngFor="let l of line; index as i">
                     <p id="{{i}}" class="line" >
                       {{i}}
-                      <ion-icon name="arrow-round-forward"></ion-icon>
+                      <ion-icon id="i{{i}}" class="" name="arrow-round-forward"></ion-icon>
                     </p>
                 </div>
               </ion-col>
@@ -75,15 +75,18 @@
               <b>CX: </b>{{regCx}}</ion-label>
             <ion-label>
               <b>DX: </b>{{regDx}}</ion-label>
+              <ion-label>
 
-            <ion-label>
-              <b>S: </b>{{reg.S}}</ion-label>
-            <ion-label>
-              <b>Z: </b>{{reg.Z}}</ion-label>
-            <ion-label>
-              <b>O: </b>{{reg.O}}</ion-label>
+                <b>S: </b><ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.S, 'bulbfalse':!reg.S}"></ion-icon>
+              </ion-label>
+                <ion-label>
 
-          </ion-card-content>
+                <b>Z: </b><ion-icon name="bulb"  [ngClass]="{'bulbtrue':reg.Z, 'bulbfalse':!reg.Z}"></ion-icon>
+              </ion-label>
+                <ion-label>
+                <b>O: </b><ion-icon name="bulb"  [ngClass]="{'bulbtrue':reg.O, 'bulbfalse':!reg.O}"></ion-icon>
+              </ion-label>
+              </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

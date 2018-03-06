@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Number } from '../cpu/number';
-
+import { Injectable } from "@angular/core";
+ 
 @Injectable()
-export class ConversorProvider {
+export class Conversor {
     toBinary(num){
         console.log("R:"+(+num).toString(2));
         return (+num).toString(2);
