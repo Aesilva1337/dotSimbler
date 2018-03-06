@@ -4,8 +4,6 @@ import { Comandos } from '../cpu/comandos';
 import { Injectable } from '@angular/core';
 @Injectable()
 export class Analyzer{
-     
-    private conversor:Conversor;
     constructor(private commands:Comandos){}
 
     analyzer(text:string){
