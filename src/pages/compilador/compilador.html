@@ -42,21 +42,25 @@
       </ion-col>
     </ion-row> -->
     <ion-row>
-      <ion-col col-6 >
-        <ion-card style="height:260px">
+      <ion-col col-6>
+        <ion-card style="height:270px">
           <ion-grid>
-
+            <ion-row style="border-radius: 2px; border: 1px solid;">
+              <ion-col style="text-align: center">
+                <b>Instruções</b>
+              </ion-col>
+            </ion-row>
             <ion-row>
               <ion-col col-4 style="padding-top: 9px !important">
-                <div   *ngFor="let l of line; index as i">
-                    <p id="{{i}}" class="line" >
-                      {{i}}
-                      <ion-icon id="i{{i}}" class="" name="arrow-round-forward"></ion-icon>
-                    </p>
+                <div *ngFor="let l of line; index as i">
+                  <p id="{{i}}" class="line">
+                    {{i}}
+                    <ion-icon id="i{{i}}" class="" name="arrow-round-forward"></ion-icon>
+                  </p>
                 </div>
               </ion-col>
               <ion-col style="overflow-y: scroll">
-                <textarea  rows="8" elastic (input)="lineUp()"  [(ngModel)]="text">
+                <textarea rows="8" elastic (input)="lineUp()" [(ngModel)]="text">
               </textarea>
               </ion-col>
             </ion-row>
@@ -65,8 +69,13 @@
       </ion-col>
 
       <ion-col col-6>
-        <ion-card  style="height:260px">
+        <ion-card style="height:270px">
           <ion-card-content>
+            <ion-row style="border-radius: 2px; border: 1px solid;">
+              <ion-col style="text-align: center">
+                <b>Instruções</b>
+              </ion-col>
+            </ion-row>
             <ion-label>
               <b>AX: </b>{{regAx}}</ion-label>
             <ion-label>
@@ -75,18 +84,24 @@
               <b>CX: </b>{{regCx}}</ion-label>
             <ion-label>
               <b>DX: </b>{{regDx}}</ion-label>
-              <ion-label>
-
-                <b>S: </b><ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.S, 'bulbfalse':!reg.S}"></ion-icon>
-              </ion-label>
+            <ion-row style="border-radius: 2px; border: 1px solid;">
+              <ion-col style="text-align: center">
+                <b>Sinalizadores</b>
+              </ion-col>
+            </ion-row>
+            <ion-row>
                 <ion-label>
+                  <b>S: </b>
+                  <ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.S, 'bulbfalse':!reg.S}"></ion-icon>
 
-                <b>Z: </b><ion-icon name="bulb"  [ngClass]="{'bulbtrue':reg.Z, 'bulbfalse':!reg.Z}"></ion-icon>
-              </ion-label>
-                <ion-label>
-                <b>O: </b><ion-icon name="bulb"  [ngClass]="{'bulbtrue':reg.O, 'bulbfalse':!reg.O}"></ion-icon>
-              </ion-label>
-              </ion-card-content>
+                  <b>Z: </b>
+                  <ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.Z, 'bulbfalse':!reg.Z}"></ion-icon>
+
+                  <b>O: </b>
+                  <ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.O, 'bulbfalse':!reg.O}"></ion-icon>
+                </ion-label>
+            </ion-row>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
