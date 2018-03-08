@@ -37,12 +37,10 @@ export class UnidadeControle{
         // console.log('Z:'+this.registrador.Z);
         // console.log('S:'+this.registrador.S);
         this.lastReg = Object.assign({}, this.registrador);
-        console.log(this.lastReg);
 
         if(this.hasOperation()){
             let pc = this.registrador.PC++;
             let op = this.memoria.getOperation(pc);
-            console.log("op",op);
             if(op!==null){
                 let execOp = this.comandos.get(op);
                 execOp();

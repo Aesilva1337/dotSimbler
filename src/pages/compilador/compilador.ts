@@ -72,8 +72,6 @@ export class CompiladorPage {
     let result = this.anl.analyzer(this.text);
     this.lineop = result[0];
     let lineopErro = result[1];
-
-    console.log("ERROS:"+lineopErro.length);
     if(lineopErro.length > 0){
       document.getElementById("i"+lineopErro[0].line)
          .classList.add("erro1");
