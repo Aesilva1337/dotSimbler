@@ -47,16 +47,16 @@
           <ion-grid>
 
             <ion-row>
-              <ion-col col-4 style="padding-top: 9px !important">
+              <ion-col col-4 style="margin-top: 4px;">
                 <div   *ngFor="let l of line; index as i">
-                    <p id="{{i}}" class="line" >
-                      {{i}}
-                      <ion-icon id="i{{i}}" class="" name="arrow-round-forward"></ion-icon>
-                    </p>
+                    <ion-label id="{{i}}" class="line">
+                        {{i}}
+                        <ion-icon id="i{{i}}" class="" name="arrow-round-forward"></ion-icon>
+                    </ion-label>
                 </div>
               </ion-col>
-              <ion-col style="overflow-y: scroll">
-                <textarea  rows="8" elastic (input)="lineUp()"  [(ngModel)]="text">
+              <ion-col style="overflow-y: scroll;">
+                <textarea  cols="100"  rows="8" elastic (input)="lineUp()"  [(ngModel)]="text">
               </textarea>
               </ion-col>
             </ion-row>

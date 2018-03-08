@@ -2,20 +2,26 @@
 textarea{
     margin:0!important; 
     height: 100%!important;
-    width: 100%;
     border: none;
-    overflow: hidden;
+    overflow: auto;
     font-size: 1.2em;
-    line-height:1.61em !important;
+    line-height:1.3em !important;
 }
 .line{
-    line-height: 1.1em;
+    //line-height: 1.1em;
+    padding: 0px !important;
+    margin: 0px;
     font-size: 1.2em !important;
 }
 
 .erro1{
     color: red;
 }
+
+.pass{
+    color:green;
+}
+
 .erro{
     position: absolute;
     width: 100px;

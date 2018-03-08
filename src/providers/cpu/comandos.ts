@@ -1,7 +1,6 @@
 import { UnidadeLogicaAritmetica } from './unidade-aritmetica/unidade-aritmetica';
 import { LineOperation } from './lineOperation';
 import { Registrador } from './registrador/registrador';
-import { Memoria } from './memoria/memoria';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -67,7 +66,7 @@ export class Comandos {
     return func;
   }
 
-  contains(val) {
-    return this.commands.has(val);
+  contains(val:string) {
+    return this.commands.has(val.trim());
   }
 }

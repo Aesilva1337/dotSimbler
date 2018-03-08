@@ -79,11 +79,27 @@ export class CompiladorPage {
          .classList.add("erro1");
          this.error(lineopErro[0].msgErro,lineopErro[0].line);
     }else{
+      if(document.getElementsByClassName("erro1").length>0)
+      document.getElementsByClassName("erro1").item(0)
+         .classList.remove("erro1");
       this.cpu.setLineOperations(this.lineop);
       this.cpu.processarOperations(this);
     }
 
 
+  }
+
+  public printLine(){
+    if(document.getElementsByClassName("pass").length>0){
+      document.getElementsByClassName("pass").
+      item(0).classList.remove("pass");
+     
+    }
+    if(this.reg.PC != -1){
+    document.getElementById("i"+this.reg.PC)
+    .classList.add("pass");
+    }
+    return true;
   }
 
   LEFTPAD(value: string) {
