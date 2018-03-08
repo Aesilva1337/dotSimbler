@@ -7,35 +7,44 @@ export class Analyzer{
     constructor(private commands:Comandos){}
 
     analyzer(text:string){
+        text = text.toUpperCase();
         let ops:LineOperation[] = this.generateLinesOperations(text);
         
-        let erros = ops.filter(e => {
-            if(e.error){
-                return e;
-            }
-        });
+        let erros;
 
-
-        if(!text.match('HLT')){
+        if(ops.length < 2){
+            let newLine = new LineOperation();
+            newLine.error = true;
+            newLine.msgErro = "Precisa-se no minímo 2 comandos.";
+            newLine.line = 0;
+            erros = [newLine];
+        }
+        else if(!text.match('HLT')){
             let newLine = new LineOperation();
             newLine.error = true;
             newLine.msgErro = "HLT não declarado";
             newLine.line = ops[ops.length-1].line;
-            erros.push(newLine);
+            erros = [newLine];
         }
+        else{
+        erros = (ops.filter(e => {
+            if(e.error){
+                console.log(e);
+                return e;
+            }
+        }));
+    }
 
         return [ops,erros];
     }
     
     private generateLinesOperations(text:string){
-        console.log("Comandos:\n"+text);
         let countLine=0;
         let arrayLineOperation:LineOperation[]=[];
-
         (text.split("\n")).forEach(e => {
             let sub = e.split(" ");
             sub=sub.filter((value,index,array)=>{
-                if(value !== ""){
+                if(value != ""){
                     return value;
                 }
             });
@@ -53,8 +62,8 @@ export class Analyzer{
                 lineOp.error = true;
                 lineOp.msgErro = "Contém mais de 2 instruções.";
             } 
-            if(!this.isValidCommand(sub[0])||
-            !this.isValidCommand(val)){
+            if(!this.isValidCommand(sub[0]) &&
+                val!=""?!this.isValidCommand(val):false){
                 lineOp.error = true;
                 lineOp.msgErro = "Comando invalido.";
             }

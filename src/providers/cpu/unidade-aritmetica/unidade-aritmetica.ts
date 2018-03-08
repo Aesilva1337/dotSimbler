@@ -7,22 +7,22 @@ export class UnidadeLogicaAritmetica{
 
 
     add(reg,x){
-        let valor = this.reg[reg] += x;
+        let valor = this.reg[reg] += +x;
         this.reg.verify(valor); 
         return valor;
     }
     sub(reg,x){
-        let valor = this.reg[reg] -= x;
+        let valor = this.reg[reg] -= +x;
         this.reg.verify(valor); 
         return valor;
     }
     mul(reg,x){
-        let valor = this.reg[reg] *= x;
+        let valor = this.reg[reg] *= +x;
         this.reg.verify(valor); 
         return valor;
     }
     div(reg,x){
-        let valor = this.reg[reg] /= x;
+        let valor = this.reg[reg] /= +x;
         this.reg.verify(valor); 
         return valor;
     }
@@ -37,12 +37,12 @@ export class UnidadeLogicaAritmetica{
         return valor;
     }
     or(reg,x){
-        let valor = this.reg[reg] |= x;
+        let valor = this.reg[reg] |= +x;
         this.reg.verify(valor); 
         return valor;
     }
     and(reg,x){
-        let valor = this.reg[reg] &= x;
+        let valor = this.reg[reg] &= +x;
         this.reg.verify(valor); 
         return valor;
     }
@@ -57,12 +57,12 @@ export class UnidadeLogicaAritmetica{
         return valor;
     }
     load(x){
-        let valor = this.reg.AX = x;    
+        let valor = this.reg.AX = +x;    
         this.reg.verify(valor); 
         return valor;
     }
     cmp(reg,x){
-        let valor = this.reg[reg] - x;
+        let valor = this.reg[reg] - +x;
         this.reg.verify(valor); 
         return valor;
     }

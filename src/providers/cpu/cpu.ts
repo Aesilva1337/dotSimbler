@@ -29,17 +29,19 @@ export class CPU{
 
     async processarOperations(callback){
         this.pause =false;
-        while(this.unidadeControle.executarOperation() && !this.pause){
+        while(callback.printLine()&&this.unidadeControle.executarOperation() && !this.pause){
             await this.sleep(+callback.rangeSpeed*10); 
             callback.changeSaida();
         };
     }
 
     proximaOperation(callback){
+        callback.printLine();
         this.unidadeControle.executarOperation();
         callback.changeSaida();
     }
     voltarOperation(callback){
+        callback.printLine()
         this.unidadeControle.voltarOperation();
         callback.changeSaida();
     }

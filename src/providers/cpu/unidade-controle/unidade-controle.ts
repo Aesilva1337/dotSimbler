@@ -28,14 +28,14 @@ export class UnidadeControle{
         return hasProximo;
     }
     executarOperation():boolean{
-        console.log('PC:'+this.registrador.PC);
-        console.log('AX:'+this.registrador.AX);
-        console.log('BX:'+this.registrador.BX);
-        console.log('CX:'+this.registrador.CX);
-        console.log('DX:'+this.registrador.DX);
-        console.log('O:'+this.registrador.O);
-        console.log('Z:'+this.registrador.Z);
-        console.log('S:'+this.registrador.S);
+        // console.log('PC:'+this.registrador.PC);
+        // console.log('AX:'+this.registrador.AX);
+        // console.log('BX:'+this.registrador.BX);
+        // console.log('CX:'+this.registrador.CX);
+        // console.log('DX:'+this.registrador.DX);
+        // console.log('O:'+this.registrador.O);
+        // console.log('Z:'+this.registrador.Z);
+        // console.log('S:'+this.registrador.S);
         this.lastReg = Object.assign({}, this.registrador);
         console.log(this.lastReg);
 
