@@ -23,7 +23,7 @@ export class CompiladorPage {
 
   tipoEntrada: string = "2";
   tipoSaida: string = "1";
-  rangeSpeed: string = "250";
+  rangeSpeed: string = "50";
   regAx: string = "00000000";
   regBx: string = "00000000";
   regCx: string = "00000000";
