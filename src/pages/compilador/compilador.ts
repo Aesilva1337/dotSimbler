@@ -23,7 +23,7 @@ export class CompiladorPage {
 
   tipoEntrada: string = "2";
   tipoSaida: string = "1";
-  rangeSpeed: string = "250";
+  rangeSpeed: string = "50";
   regAx: string = "00000000";
   regBx: string = "00000000";
   regCx: string = "00000000";
@@ -72,8 +72,6 @@ export class CompiladorPage {
     let result = this.anl.analyzer(this.text);
     this.lineop = result[0];
     let lineopErro = result[1];
-
-    console.log("ERROS:"+lineopErro.length);
     if(lineopErro.length > 0){
       document.getElementById("i"+lineopErro[0].line)
          .classList.add("erro1");
