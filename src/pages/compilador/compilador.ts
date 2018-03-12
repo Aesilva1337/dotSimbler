@@ -1,18 +1,10 @@
-import { LineOperation } from './../../providers/cpu/lineOperation';
 import { CPU } from './../../providers/cpu/cpu';
 import { Registrador } from './../../providers/cpu/registrador/registrador';
 import { Conversor } from './../../providers/conversor/conversor';
-import { Component, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Analyzer } from '../../providers/analyzer/analyzer';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
-
-/**
- * Generated class for the CompiladorPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -58,28 +50,34 @@ export class CompiladorPage {
     this.line = this.text.split('\n');
   }
 
+  stop(){
+    document.getElementById('card').scrollTop = 0;
+    this.cpu.stop(this);
+  }
   prox(){
     this.cpu.proximaOperation(this);
   }
   voltar(){
     this.cpu.voltarOperation(this);
   }
-  parar(){
-    this.cpu.parar();
+  pause(){
+    this.cpu.pause();
   }
 
   async play() {
     let result = this.anl.analyzer(this.text);
     this.lineop = result[0];
     let lineopErro = result[1];
+
+    if(document.getElementsByClassName("erro1").length>0)
+    document.getElementsByClassName("erro1").item(0)
+       .classList.remove("erro1");
+
     if(lineopErro.length > 0){
       document.getElementById("i"+lineopErro[0].line)
          .classList.add("erro1");
          this.error(lineopErro[0].msgErro,lineopErro[0].line);
     }else{
-      if(document.getElementsByClassName("erro1").length>0)
-      document.getElementsByClassName("erro1").item(0)
-         .classList.remove("erro1");
       this.cpu.setLineOperations(this.lineop);
       this.cpu.processarOperations(this);
     }
@@ -91,12 +89,23 @@ export class CompiladorPage {
     if(document.getElementsByClassName("pass").length>0){
       document.getElementsByClassName("pass").
       item(0).classList.remove("pass");
-     
+
     }
     if(this.reg.PC != -1){
     document.getElementById("i"+this.reg.PC)
     .classList.add("pass");
+  }
+
+  if(this.line[this.reg.PC] != undefined){
+    console.log(this.line[this.reg.PC])
+    let v = 0;
+    for (let i = 0; i < this.reg.PC; i++) {
+        v += this.line[i].length;
     }
+
+    document.getElementById('card').scrollTop += 10;
+  }
+
     return true;
   }
 
@@ -106,9 +115,9 @@ export class CompiladorPage {
   changeSaida() {
     switch (this.tipoSaida) {
       case "0": {
-        this.regAx = this.reg.DX;
-        this.regBx = this.reg.CX;
-        this.regCx = this.reg.BX;
+        this.regAx = this.reg.AX;
+        this.regBx = this.reg.BX;
+        this.regCx = this.reg.CX;
         this.regDx = this.reg.DX;
         break;
       }

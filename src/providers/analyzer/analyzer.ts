@@ -29,12 +29,10 @@ export class Analyzer{
         else{
         erros = (ops.filter(e => {
             if(e.error){
-                console.log(e);
                 return e;
             }
         }));
     }
-
         return [ops,erros];
     }
     
@@ -49,6 +47,8 @@ export class Analyzer{
                 }
             });
             
+            
+
             let val = "";
             if(sub.length > 1)
                 val = sub[1];
@@ -61,14 +61,18 @@ export class Analyzer{
             if(sub.length>2){
                 lineOp.error = true;
                 lineOp.msgErro = "Contém mais de 2 instruções.";
-            } 
-            if(!this.isValidCommand(sub[0]) &&
-                val!=""?!this.isValidCommand(val):false){
-                lineOp.error = true;
-                lineOp.msgErro = "Comando invalido.";
             }
 
-
+            if(sub.length != 0){
+                
+            
+            if(!this.isValidCommand(sub[0]) ||
+                val!=""?!this.isValidCommand(val): 
+                !this.commands.isOneCommand(sub[0])){
+                    lineOp.error = true;
+                    lineOp.msgErro = "Comando invalido.";
+            }
+        }
             arrayLineOperation.push(lineOp);
         });
 
@@ -77,9 +81,9 @@ export class Analyzer{
 
     private isValidCommand(command:string){
         if(command!=null){
-            return this.commands.contains(command)||
-            command.match('@\\d+') ||
-            command.match('\\d+') ;
+            return this.isComando(command)||
+            command.match('^@\\d+') ||
+            command.match('^\\d+') ;
         }
         return true;
     }
