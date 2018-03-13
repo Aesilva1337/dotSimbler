@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CPU{
 
-    private pause = false;
+    private ispause = false;
 
     constructor(private unidadeControle: UnidadeControle,
         private memoria:Memoria){
@@ -23,26 +23,34 @@ export class CPU{
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    parar(){
-        this.pause = true;
+    pause(){
+        this.ispause = true;
+    }
+
+    stop(callback){
+        this.unidadeControle.reset();
+        callback.printLine();
+        callback.changeSaida();
     }
 
     async processarOperations(callback){
-        this.pause =false;
-        while(callback.printLine()&&this.unidadeControle.executarOperation() && !this.pause){
+        callback.printLine();
+        this.ispause =false;
+        while( !this.ispause && (this.unidadeControle.executarOperation() && callback.printLine()) ){
             await this.sleep(+callback.rangeSpeed*10); 
             callback.changeSaida();
         };
     }
 
     proximaOperation(callback){
-        callback.printLine();
         this.unidadeControle.executarOperation();
+        callback.printLine();
         callback.changeSaida();
     }
     voltarOperation(callback){
-        callback.printLine()
-        this.unidadeControle.voltarOperation();
-        callback.changeSaida();
+        if(this.unidadeControle.voltarOperation()){
+            callback.printLine();
+            callback.changeSaida();
+        }
     }
 }

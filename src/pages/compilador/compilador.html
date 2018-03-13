@@ -28,6 +28,23 @@
         </ion-item>
       </ion-col>
     </ion-row>
+    <ion-row style="margin-left: auto; margin-right: auto; display: block;">
+      <button ion-button icon-only (click)="play()" id="btnStart" [disabled]="inExec">
+        <ion-icon name="play"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="pause()" id="btnPause" [disabled]="!inExec">
+        <ion-icon name="pause"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="stop()" id="btnStop" [disabled]="!inExec">
+        <ion-icon name="square"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="voltar()" id="btnPre" [disabled]="!inExec">
+        <ion-icon name="skip-backward"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="prox()" id="btnNext" [disabled]="!inExec">
+        <ion-icon name="skip-forward"></ion-icon>
+      </button>
+    </ion-row>
     <!-- <ion-row>
       <ion-col>
         <ion-item>
@@ -42,25 +59,35 @@
       </ion-col>
     </ion-row> -->
     <ion-row>
-      <ion-col col-6 style="margin-top: 8px;">
-        <ion-card style="height:262px">
+      <ion-col col-6>
+        <div style="border-radius: 2px; border: 1px solid;text-align: center; margin:10px 0 10px">
+          <b>Instruções</b>
+        </div>
+      </ion-col>
+
+      <ion-col col-6>
+        <div style="border-radius: 2px; border: 1px solid;text-align: center; margin:10px 0 10px">
+          <b>Registradores</b>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card id="card" style="height:262px; margin: 0px;width:100%">
           <ion-grid>
-            <ion-row class="borda">
-              <ion-col style="text-align: center">
-                <b>Instruções</b>
-              </ion-col>
-            </ion-row>
             <ion-row>
-              <ion-col col-4 style="margin-top: 4px;">
+              <ion-col col-3>
                 <div *ngFor="let l of line; index as i">
-                  <ion-label id="{{i}}" class="line">
-                    {{i}}
-                    <ion-icon id="i{{i}}" class="" name="arrow-round-forward"></ion-icon>
+                  <ion-label id="i{{i}}" class="line">
+                    {{i}}:
+                    <!-- <ion-icon id="i{{i}}" class="" name=""></ion-icon>
+                      -->
+
                   </ion-label>
                 </div>
               </ion-col>
               <ion-col style="overflow-y: scroll;">
-                <textarea cols="100" rows="8" elastic (input)="lineUp()" [(ngModel)]="text">
+                <textarea id="txtarea" cols="100" rows="11" elastic (input)="lineUp()" [(ngModel)]="text">
               </textarea>
               </ion-col>
             </ion-row>
@@ -69,75 +96,67 @@
       </ion-col>
 
       <ion-col col-6>
-        <ion-card style="height:270px; width: 140px;">
-          <ion-card-content>
-            <ion-row class="borda">
-              <ion-col style="text-align: center;">
-                <b>Registradores</b>
-              </ion-col>
-            </ion-row>
-            <ion-label>
-              <b>AX: </b>{{regAx}}</ion-label>
-            <ion-label>
-              <b>BX: </b>{{regBx}}</ion-label>
-            <ion-label>
-              <b>CX: </b>{{regCx}}</ion-label>
-            <ion-label>
-              <b>DX: </b>{{regDx}}</ion-label>
-            <ion-row class="borda">
-              <ion-col style="text-align: center;">
-                <b>Sinalizadores</b>
-              </ion-col>
+        <ion-card style="height:173px; margin: 0px;width:100%; padding-left:10px">
+          <ion-grid style="text-align: center">
+            <ion-row>
+              <ion-label>
+                <b>AX: </b>{{regAx}}</ion-label>
             </ion-row>
             <ion-row>
               <ion-label>
+                <b>BX: </b>{{regBx}}</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-label>
+                <b>CX: </b>{{regCx}}</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-label>
+                <b>DX: </b>{{regDx}}</ion-label>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+        <div style="border-radius: 2px; border: 1px solid;text-align: center; margin:10px 0 10px">
+          <b>Sinalizadores</b>
+        </div>
+        <ion-card style="height: 50px; margin: 0px;width:100%; padding-left:10px">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
                 <b>S: </b>
                 <ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.S, 'bulbfalse':!reg.S}"></ion-icon>
-
+              </ion-col>
+              <ion-col>
                 <b>Z: </b>
                 <ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.Z, 'bulbfalse':!reg.Z}"></ion-icon>
-
+              </ion-col>
+              <ion-col>
                 <b>O: </b>
                 <ion-icon name="bulb" [ngClass]="{'bulbtrue':reg.O, 'bulbfalse':!reg.O}"></ion-icon>
-              </ion-label>
+              </ion-col>
             </ion-row>
-          </ion-card-content>
+          </ion-grid>
         </ion-card>
       </ion-col>
     </ion-row>
 
-    <ion-row style="border-radius: 2px; border: 1px solid;">
-      <ion-col>
-        <ion-label>
-          <b>Velocidade de execução das instruções:</b>
-        </ion-label>
+    <ion-row>
+      <ion-col col-12>
+        <div style="border-radius: 2px; border: 1px solid;text-align: center; margin:10px 0 10px">
+          <b>Velocidade de execução das instruções: {{rangeSpeed/100}} s</b>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-range min="0" max="500" step="10" [(ngModel)]="rangeSpeed">
+        <ion-range style="padding:0" min="0" max="500" step="10" [(ngModel)]="rangeSpeed">
           <ion-icon range-left name="remove-circle"></ion-icon>
           <ion-icon range-right name="add-circle"></ion-icon>
         </ion-range>
       </ion-col>
     </ion-row>
 
-    <ion-row style="margin-left: auto; margin-right: auto; display: block;">
-      <button ion-button icon-only (click)="play()">
-        <ion-icon name="play"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="parar()">
-        <ion-icon name="pause"></ion-icon>
-      </button>
-      <button ion-button icon-only>
-        <ion-icon name="square"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="voltar()">
-        <ion-icon name="skip-backward"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="prox()">
-        <ion-icon name="skip-forward"></ion-icon>
-      </button>
-    </ion-row>
+
   </ion-grid>
 </ion-content>

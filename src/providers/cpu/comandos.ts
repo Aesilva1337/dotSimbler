@@ -69,4 +69,9 @@ export class Comandos {
   contains(val:string) {
     return this.commands.has(val.trim());
   }
+
+  isOneCommand(val:string){
+    return (val == "HLT" || val == "NOP" ||val == "NOT");
+  }
+
 }

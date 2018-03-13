@@ -20,7 +20,32 @@ export class Registrador {
     
     public verify(value){
         this.Z = value == 0;
-        this.O = (value < -256 || value > 256);
+        this.O = (value < -255 || value > 255);
         this.S = value < 0;
+    }
+
+    copy(){
+        let s = {
+        'AX':this.AX,
+        'BX':this.BX,
+        'CX':this.CX,
+        'DX':this.DX,
+        'O':this.O,
+        'Z':this.Z,
+        'S':this.S,
+        'PC':this.PC};
+        
+        return s;
+    }
+    set(reg){
+        this.AX = reg.AX;
+        this.BX = reg.BX;
+        this.CX = reg.CX;
+        this.DX = reg.DX;
+        this.O = reg.O;
+        this.Z = reg.Z;
+        this.S = reg.S;
+        this.PC = reg.PC;
+
     }
 }
